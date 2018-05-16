@@ -1,7 +1,7 @@
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
         
-            <div class="inv-wrapper">
+            <div class="inv-wrapper-dropdowns clearfix">
                 <amp-state id="inventoryList" src="json/all.json"></amp-state>
                 <amp-state id="EX" src="json/EX.json"></amp-state>
                 <amp-state id="WL" src="json/WL.json"></amp-state>
@@ -49,29 +49,33 @@
             </div>
         
             <div class="inv-wrapper">
+                
+                <div class="inv-list-row-container">
+                    <amp-list width="auto" height="<?php echo file_get_contents('ABSOLUTE DIRECTORY PATH/count.txt')*70; ?>" [height]="inventory.listSrc.length*57" layout="fixed-height" src="json/all.json" [src]="inventory.listSrc">  
+                        <template type="amp-mustache">
+                            <div class="inv-list-row-content">
 
-                <div class="inv-list-row">
-                
-                    <div class="inv-list-header">Serial Number</div>
-                    <div class="inv-list-header">BOM Number</div>
-                    <div class="inv-list-header">Description</div>
-                    <div class="inv-list-header">Machine Make</div>
-                    <div class="inv-list-header">Machine Model/Category</div>
-                    <div class="inv-list-header">Machine</div>
-                
+                                    <div class="inv-list-left">
+
+                                        <div class="inv-list-item-entry">Serial Number:</div>
+                                        <div class="inv-list-item-content">{{SerialNo_SerialNumber}}</div>
+                                        <div class="inv-list-item-entry">Description:</div>
+                                        <div class="inv-list-item-content">{{Part_PartDescription}}</div>
+
+                                    </div>
+
+                                    <div class="inv-list-right">
+
+                                        <div class="inv-list-item-entry"><span class="entry-title">BOM #:</span> {{Part_PartNum}}</div>
+                                        <div class="inv-list-item-entry"><span class="entry-title">Machine:</span> {{Type}}</div>
+                                        <div class="inv-list-item-entry"><span class="entry-title">Make:</span> {{Part_CommercialBrand}}</div>
+                                        <div class="inv-list-item-entry"><span class="entry-title">Model:</span> {{Part_CommercialSubBrand}}</div>
+
+                                    </div>
+
+                                </div>
+                        </template> 
+                    </amp-list>
                 </div>
-                
-                <amp-list width="auto" height="<?php echo file_get_contents('ABSOLUTE DIRECTORY PATH/count.txt')*70; ?>" [height]="inventory.listSrc.length*57" layout="fixed-height" src="json/all.json" [src]="inventory.listSrc">  
-                    <template type="amp-mustache">
-                        <div class="inv-list-row">
-                            <div class="inv-list-item inventory">{{SerialNo_SerialNumber}}</div>
-                            <div class="inv-list-item inventory">{{Part_PartNum}}</div>
-                            <div class="inv-list-item inventory">{{Part_PartDescription}}</div>
-                            <div class="inv-list-item inventory">{{Part_CommercialBrand}}</div>
-                            <div class="inv-list-item inventory">{{Part_CommercialSubBrand}}</div>
-                            <div class="inv-list-item inventory">{{Type}}</div>
-                        </div> 
-                    </template> 
-                </amp-list>
                 
             </div>
