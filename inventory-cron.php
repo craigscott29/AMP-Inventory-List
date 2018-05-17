@@ -44,7 +44,7 @@ foreach($array['items'] as $i => $item) {
 }
 
 // Couldn't get count to work on the page, so thug lyfe.
-file_put_contents($countFile,$i) or die("Could not save count file");
+file_put_contents($countFile,$i+1) or die("Could not save count file");
 
 $inv = json_encode($array);
 
